@@ -41,6 +41,15 @@ public class FlightStatusController {
         return ResponseEntity.ok(flightStatuses);
     }
 
+    @CrossOrigin("http://localhost:4200")
+    @GetMapping("/flight-statusByLatest")
+    public ResponseEntity<FlightStatus> getAllFlightStatusesByLST() {
+        List<FlightStatus> flightStatuses = flightStatusRepository.findByLatestSubmissionTime();
+
+        FlightStatus fs = flightStatuses.get(0);
+        return ResponseEntity.ok(fs);
+    }
+
 
 
     @CrossOrigin("http://localhost:4200")
